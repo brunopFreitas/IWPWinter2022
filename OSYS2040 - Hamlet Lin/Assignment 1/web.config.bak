@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <system.webServer>
+        <httpErrors>
+            <remove statusCode="401" subStatusCode="-1" />
+            <error statusCode="401" path="http://localhost:8080/FailedLogin.html" responseMode="Redirect" />
+        </httpErrors>
+		<security>
+         <authentication>
+            <anonymousAuthentication enabled="false" />
+            <basicAuthentication enabled="true" defaultLogonDomain="Contoso" />
+            <windowsAuthentication enabled="true" />
+          </authentication>
+      </security>
+        <defaultDocument>
+            <files>
+                <clear />
+                <add value="index.html" />
+            </files>
+        </defaultDocument>
+        <directoryBrowse enabled="true" showFlags="Date, Time, Size, Extension, LongDate" />
+    </system.webServer>
+</configuration>

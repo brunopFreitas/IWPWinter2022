@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+    <link rel="stylesheet" href="styles.css">
+    <head>
+        <title>Successfull login page</title>
+    </head>
+    <body>
+        <header>
+            <h1>WebServer Fundamentals - OSYS2040</h1>
+            <article>
+                <h2 id="congrats">Congratulations, you have logged in.</h2>
+                <p>Current Date and Time is <span id='date-time'></span>.</p>
+                    <script>
+                        var dt = new Date();
+                        document.getElementById('date-time').innerHTML=dt;
+                    </script>
+                <section>
+                    <img src="img/puffins.jpg" alt="Puffins">
+                </section>
+            </article>
+        </header>
+        <footer>
+            <p>
+                Author: Bruno Freitas<br>
+                Date: 2022-01-18
+            </p>
+            <p>
+                <a href="https://mail.google.com/mail/?view=cm&fs=1&tf=1&to=w0448225@nscc.ca&su=Assignment 1 Website&body=Hi there," target="_blank">Webmaster</a>
+            </p>
+        </footer>
+    </body>
+</html>

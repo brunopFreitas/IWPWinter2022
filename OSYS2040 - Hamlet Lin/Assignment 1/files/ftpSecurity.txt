@@ -1,0 +1,17 @@
+Security
+FTP was not designed to be a secure protocol, and has many security weaknesses.[34] In May 1999, the authors of RFC 2577 listed a vulnerability to the following problems:
+
+Brute-force attack
+FTP bounce attack
+Packet capture
+Port stealing (guessing the next open port and usurping a legitimate connection)
+Spoofing attack
+Username enumeration
+DoS or DDoS
+FTP does not encrypt its traffic; all transmissions are in clear text, and usernames, passwords, commands and data can be read by anyone able to perform packet capture (sniffing) on the network.[3][34] This problem is common to many of the Internet Protocol specifications (such as SMTP, Telnet, POP and IMAP) that were designed prior to the creation of encryption mechanisms such as TLS or SSL.[9]
+
+Common solutions to this problem include:
+
+Using the secure versions of the insecure protocols, e.g., FTPS instead of FTP and TelnetS instead of Telnet.
+Using a different, more secure protocol that can handle the job, e.g. SSH File Transfer Protocol or Secure Copy Protocol.
+Using a secure tunnel such as Secure Shell (SSH) or virtual private network (VPN).
