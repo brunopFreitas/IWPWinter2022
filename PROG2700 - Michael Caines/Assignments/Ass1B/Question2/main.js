@@ -7,6 +7,7 @@
 // return: There are 35 weeks, 3 days, 13 hours, 25 minutes, and 12 seconds until my next birthday!
 
 var myNextBirthday = (function question2() {
+    'use strict';
     let nextBirthday = new Date("07/22/2022");
     let today = new Date();
     //Miliseconds in a day
@@ -26,7 +27,11 @@ var myNextBirthday = (function question2() {
             timeUntilNextBirthday.hours = timeUntilNextBirthday.days*24;
             timeUntilNextBirthday.minutes = timeUntilNextBirthday.hours*60;
             timeUntilNextBirthday.seconds = timeUntilNextBirthday.minutes*60;
-            return timeUntilNextBirthday;
+            return 'There are ' + timeUntilNextBirthday.weeks 
+            + ' weeks, ' + timeUntilNextBirthday.days + ' days, ' 
+            + timeUntilNextBirthday.hours + ' hours, ' 
+            + timeUntilNextBirthday.minutes + ' minutes, ' 
+            + 'and ' + timeUntilNextBirthday.seconds + ' seconds until my next birthday!';
             }
         }
     }

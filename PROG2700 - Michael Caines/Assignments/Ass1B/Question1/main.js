@@ -31,4 +31,4 @@ var wordChanged = (function question1() {
     }        
 })();
 //Item 1
- console.log(wordChanged.getWord(originalWord = 'Cracker'));
+ console.log(wordChanged.getWord(originalWord = 'Triscuit'));
