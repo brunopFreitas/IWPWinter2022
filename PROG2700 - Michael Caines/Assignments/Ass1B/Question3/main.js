@@ -38,6 +38,6 @@ var myPrimeNumber = (function question3() {
     }
 })();
 
-    console.log(myPrimeNumber.getPrimeNumber());
+console.log(myPrimeNumber.getPrimeNumber());
 
 

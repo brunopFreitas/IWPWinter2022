@@ -15,7 +15,6 @@ var theLargestSum = (function question4() {
     let theObject = [100, 101, 102, 3, 4, 5, 6, 9];
     let onlySequenceObject =[];
     let theLargestStreak = [];
-    let biggestStreak=0;
     let biggestStreakLength=0;
     let theSum=0;
     let biggestStreakPosition=0;
