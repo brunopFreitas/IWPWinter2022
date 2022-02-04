@@ -1,11 +1,12 @@
-        //fetch('https://www.mikecaines.com/cards/royalflush.json')
-        //fetch('https://www.mikecaines.com/cards/straightflush.json')
-        //fetch('https://www.mikecaines.com/cards/fourofakind.json')
-        //fetch('https://www.mikecaines.com/cards/fullhouse.json')
-        //fetch('https://www.mikecaines.com/cards/flush.json')
-        //fetch('https://www.mikecaines.com/cards/highstraight.json')
-        //fetch('https://www.mikecaines.com/cards/lowstraight.json')
-        //fetch('https://www.mikecaines.com/cards/threeofakind.json')
-        //fetch('https://www.mikecaines.com/cards/twopair.json')
-        //fetch('https://www.mikecaines.com/cards/pair.json')
-        //fetch('https://www.mikecaines.com/cards/acehigh.json')
+fetch these links:
+
+Royal Flush: https://pokerhand-tester.herokuapp.com/royalflush
+Straight Flush: https://pokerhand-tester.herokuapp.com/straightflush
+Four of a kind: https://pokerhand-tester.herokuapp.com/fourofakind
+Full House: https://pokerhand-tester.herokuapp.com/fullhouse
+Flush: https://pokerhand-tester.herokuapp.com/flush
+Straight: https://pokerhand-tester.herokuapp.com/straight
+Three of a kind: https://pokerhand-tester.herokuapp.com/threeofakind
+Two Pair: https://pokerhand-tester.herokuapp.com/twopair
+One Pair: https://pokerhand-tester.herokuapp.com/onepair
+High Card: https://pokerhand-tester.herokuapp.com/highcard

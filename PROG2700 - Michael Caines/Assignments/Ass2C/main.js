@@ -155,7 +155,7 @@
             // The second 4 repeats 2 times.
             // The third 4 repeats only once.
             // Sum of repetition = 6.
-            } else if (valueRepetition===6 && suitRepetition<10) {
+            } else if (valueRepetition===6) {
                 displayHandInformation("Four of a kind")
             //The logic of the straight flush is a combination between flush and straight
             //however, there's a new variable called highestSequence, which means:
