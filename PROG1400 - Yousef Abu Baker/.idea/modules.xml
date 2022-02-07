@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/InClassExercises/Exercise1/Exercise1.iml" filepath="$PROJECT_DIR$/InClassExercises/Exercise1/Exercise1.iml" />
+      <module fileurl="file://$PROJECT_DIR$/InClassExercises/Exercise2/Grade Convertor/Grade Convertor.iml" filepath="$PROJECT_DIR$/InClassExercises/Exercise2/Grade Convertor/Grade Convertor.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Assignments/A1/PartOne/PartOne.iml" filepath="$PROJECT_DIR$/Assignments/A1/PartOne/PartOne.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Assignments/A1/PartThree/PartThree.iml" filepath="$PROJECT_DIR$/Assignments/A1/PartThree/PartThree.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Assignments/A1/PartTwo/PartTwo.iml" filepath="$PROJECT_DIR$/Assignments/A1/PartTwo/PartTwo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Class 2/coffeeAndTeaShop/coffeeAndTeaShop.iml" filepath="$PROJECT_DIR$/Class 2/coffeeAndTeaShop/coffeeAndTeaShop.iml" />
+      <module fileurl="file://$PROJECT_DIR$/InClassExercises/Exercise3/houseParty/houseParty.iml" filepath="$PROJECT_DIR$/InClassExercises/Exercise3/houseParty/houseParty.iml" />
+    </modules>
+  </component>
+</project>
