@@ -1,64 +1,84 @@
 package com.company;
 
 import java.util.ArrayList;
-import java.util.Random;
+import java.util.Scanner;
+import java.io.*;
 
 public class Main {
 
     //Generate random marks
-    static Double myMark() {
-        Random number = new Random();
-        double minMark = 0;
-        double maxMark = 25;
-        double mark = (minMark + (maxMark - minMark) * number.nextDouble());
-        return mark;
-    }
 
     public static void main(String[] args) {
+        System.out.println();
 
 	// write your code here
+        //Creating my variables
         ArrayList<Course> courseObject = new ArrayList<Course>();
-        ArrayList<Student> studentObjectCourseOne = new ArrayList<Student>();
-        ArrayList<Student> studentObjectCourseTwo = new ArrayList<Student>();
-        Double total=0.0;
+        Scanner userInput = new Scanner(System.in);
+        int courseQuantity;
+        int studentQuantity;
+        int assignmentQuantity;
+
+        System.out.println("PROG1700");
+        System.out.println("Assignment 2");
+        System.out.println("##############################################################");
+        System.out.print("Please inform how many Courses you are creating today: ");
+        courseQuantity = userInput.nextInt();
 
     //Course
-        courseObject.add(new Course("Ruby on Rails"));
-        courseObject.add(new Course("Swift"));
+        for(int i=0;i<courseQuantity;i++) {
+            System.out.print("Please inform the name of the course " + (i+1) + " : ");
+            courseObject.add(new Course(userInput.next()));
+        }
 
-    //Student course one
-        studentObjectCourseOne.add(new Student("Maja Eugraphios"));
-        studentObjectCourseOne.add(new Student("Darragh Asena"));
-        studentObjectCourseOne.add(new Student("Meshullam Hayati"));
-        studentObjectCourseOne.add(new Student("Kshitij Fajra"));
-        studentObjectCourseOne.add(new Student("Adad-Nirari Ilmari"));
-        studentObjectCourseOne.add(new Student("Felipa Ankur"));
+    //Student course
+        System.out.println("##############################################################");
+        System.out.print("Please inform how many Students per course: ");
+        studentQuantity = userInput.nextInt();
+        for(int j=0;j<courseObject.size();j++) {
+            System.out.println("Enter students for " + courseObject.get(j).getCourseName());
+            for(int i=0;i<studentQuantity;i++) {
+                System.out.print("Enter name for student " + (i+1) + " : ");
+                        courseObject.get(j).setStudent(userInput.next());
+            }
+        }
 
-    //Student course two
-        studentObjectCourseTwo.add(new Student("Tóki Monserrat"));
-        studentObjectCourseTwo.add(new Student("Sofía Hina"));
-        studentObjectCourseTwo.add(new Student("Gertrudis Sofija"));
-        studentObjectCourseTwo.add(new Student("Inkeri Amund"));
-        studentObjectCourseTwo.add(new Student("Martina Darnell"));
-        studentObjectCourseTwo.add(new Student("Gian Luke"));
-
-    //SetStudentToCourse
-        courseObject.get(0).setStudentObject(studentObjectCourseOne);
-        courseObject.get(1).setStudentObject(studentObjectCourseTwo);
+    //Set Assignments
+        System.out.println("##############################################################");
+        System.out.print("Please inform how many Assignments you are creating today: ");
+        assignmentQuantity = userInput.nextInt();
+        for(int j=0;j<assignmentQuantity;j++) {
+            for(int i=0;i<assignmentQuantity;i++) {
+                courseObject.get(j).createAssignment("Assignment " + (i+1));
+            }
+        }
 
     //Set student mark
-        for(int i=0;i<studentObjectCourseOne.size();i++) {
-            studentObjectCourseOne.get(i).setMark(myMark());
-            studentObjectCourseTwo.get(i).setMark(myMark());
-        }
-    //Report 1
-        System.out.println("This is Report 1");
-        System.out.print("Total mars of Assignment 1 is: ");
-        for(int i=0;i<courseObject.get(0).getStudentObject().size();i++) {
-                total =+ courseObject.get(0).getStudentObject().get(i).getMark().get(0);
+        System.out.println("##############################################################");
+        System.out.println("Let`s include some marks");
+        for(int i=0;i<courseObject.size();i++) {
+            System.out.println("Enter marks for " + courseObject.get(i).getCourseName());
+            for(int j=0;j<courseObject.get(i).getAssignmentObject().size();j++) {
+                System.out.println("Enter " + courseObject.get(i).getAssignmentObject().get(j).getAssignmentName() + " marks");
+                for(int k=0;k<courseObject.get(i).getStudentObject().size();k++) {
+                    System.out.print("Enter mark for " + courseObject.get(i).getStudentObject().get(k).getStudentName() + " : ");
+                    courseObject.get(i).includeMark(courseObject.get(i).getAssignmentObject().get(j), courseObject.get(i).getStudentObject().get(k), userInput.nextDouble());
+                }
+            }
         }
 
-        System.out.println(total);
+        //Retrieve marks
+        System.out.println("##############################################################");
+        System.out.println("Printing marks");
+        for(int i=0;i<courseObject.size();i++) {
+            System.out.println("printing marks for " + courseObject.get(i).getCourseName());
+            for(int j=0;j<courseObject.get(i).getAssignmentObject().size();j++) {
+                System.out.println("Printing marks for " + courseObject.get(i).getAssignmentObject().get(j).getAssignmentName());
+                for(int k=0;k<courseObject.get(i).getStudentObject().size();k++) {
+                    System.out.print("Printing marks for " + courseObject.get(i).getStudentObject().get(k).getStudentName() + " : " + courseObject.get(i).retrieveMark(courseObject.get(i).getAssignmentObject().get(j), courseObject.get(i).getStudentObject().get(k)));
+                }
+            }
+        }
 
 
 
