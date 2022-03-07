@@ -24,6 +24,7 @@
         let suitRepetition=0
         let sequence=0
         let highestSequence=0
+        let weirdStraightFlush=false;
         //Ordered array
         let cardInSequence=[]
         //benchmark
@@ -34,10 +35,10 @@
             ]
         }
         //URL to fetch
-        const url = 'https://deckofcardsapi.com/api/deck/new/draw/?count=5'
+        const url = 'https://pokerhand-tester.herokuapp.com/straightflush'
         fetch(url)
         .then(data=>{return data.json()})
-        .then(response=>{    
+        .then(response=>{  
             //Displaying the cards in the DOM      
             for(let i=0;i<response.cards.length;i++) {
                 displayImage(response.cards[i].image,170,170,'card')
@@ -83,6 +84,13 @@
                     }
                     highestSequence+=cardInSequence[r]
                 }
+
+            //In case of "ACE" acting as a "ONE"
+            console.log(cardInSequence)
+            if(cardInSequence[0]===1 && cardInSequence[1]===2 && cardInSequence[2]===3 && cardInSequence[3]===4 && cardInSequence[4]===13) {
+                weirdStraightFlush=true;
+            }
+            console.log(weirdStraightFlush)
 
             //Here I'm applying each logic stated above inside if's to find out the poker hand.
             //High card must have no value repetition, max 4 same suits and max 4 cards in sequence
@@ -135,7 +143,7 @@
             // The fourth CLUBS repeats 1 times.
             // The fiveth CLUBS does not repeat.
             // suitRepetition=10
-            } else if (valueRepetition<4 && suitRepetition===10 && sequence<4) {
+            } else if (valueRepetition<4 && suitRepetition===10 && sequence<4 && !weirdStraightFlush) {
                 displayHandInformation("Flush")
             //a full house must have 4 value repetition and max 4 same suits
             // For instance: 4 4 3 3 3
@@ -162,7 +170,7 @@
             //I'm summing the index of my benchmark ("2" to "ACE" has index beginning at 1 ending at 13)
             //So, the highest sequence will assume index of 13,12,11,10,9=55
             //Hence highestSequence=13+12+11+10+9=55 to be a royal flush
-            } else if (sequence===4 && suitRepetition===10 && highestSequence<55) {
+            } else if (sequence===4 && suitRepetition===10 && highestSequence<55 || weirdStraightFlush) {
                 displayHandInformation("Straight Flush")
             //The logic of the royal flush is the same of the straight flush
             //however, highestSequence must be 55.
