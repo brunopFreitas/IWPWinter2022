@@ -38,7 +38,7 @@ public class Main {
                     System.out.println("Enter Assignment1 mark for " + studentName);
                     studentMark1 = userInput.nextDouble();
                 }
-                while(studentMark1<0 || studentMark2>20) {
+                while(studentMark2<0 || studentMark2>20) {
                     System.out.println("Enter Assignment2 mark for " + studentName);
                     studentMark2 = userInput.nextDouble();
                 }
