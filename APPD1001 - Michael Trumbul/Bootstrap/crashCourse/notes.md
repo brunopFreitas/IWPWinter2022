@@ -2,7 +2,20 @@
 
 Framework to handle css easily.
 You can add multiple classes for a single element to make them appear differently depending on the screen width.
+- class="red-text text-center"
 
+## Font Awesome - Lib of Icons
+
+```HTML
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+```
+
+How to use:
+The i element was originally used to make other elements italic, but is now commonly used for icons.
+
+```HTML
+<i class="fas fa-info-circle"></i>
+```
 
 ## Including local files:
 
@@ -65,7 +78,7 @@ By default, the Bootstrap 4 grid consists of 12 columns.
 
 - .col-size
   - A number between 1 and 12 (position)
-  - Or predefined sizes or breakpoints: sm, md, lg, xl (Depend on the screen width in px)
+  - Or predefined sizes or breakpoints: xs, sm, md, lg, xl (Depend on the screen width in px)
 
 - .col-[breakpoint]-[size].
   - A mix between predefined sizes and position.
@@ -101,3 +114,41 @@ In order to use the flex utilies you need to have a flex container.
   - between : Evenly space between the elements
   - around : Evenly space around the elements
 
+### Image
+- img-responsive
+  - Make images responsive
+
+### Text
+- text-center
+  - Align center
+- text-primary
+  - Apply Header styling to the text
+- text-danger
+  - Red text
+
+### Elements
+
+## Button
+
+- btn 
+  - Mandatory class
+- btn-block
+  - Cover the whole width
+- btn-default
+  - Button has the same size as the word within
+- btn-primary
+  - Apply some color to the button and is used to focus the button
+- btn-info
+  - Apply some color to the button and is used to give options
+- btn-danger
+  - Apply some color to the button and is used to give an alert
+
+## Forms
+
+- form-control
+  - Width of 100% to elements within a form
+
+### Visual
+
+- well 
+  - Some background style.
