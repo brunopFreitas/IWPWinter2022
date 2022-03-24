@@ -4,12 +4,12 @@ Framework to handle css easily.
 You can add multiple classes for a single element to make them appear differently depending on the screen width.
 - class="red-text text-center"
 
-## Font Awesome - Lib of Icons
+## Lib of Icons
 
+Font Awesome
 ```HTML
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
 ```
-
 How to use:
 The i element was originally used to make other elements italic, but is now commonly used for icons.
 
@@ -39,7 +39,7 @@ The i element was originally used to make other elements italic, but is now comm
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 ```
 
-### First things first
+## First things first
 
 Everything is inside a container.
 
@@ -51,13 +51,28 @@ Everything is inside a container.
 </body>
 ```
 
-### Container
+## Container
 
 .container-fluid: takes 100% of the screen regardless of the screen width.
 
 .container: Depend on the width of the screen, cover an amount of the screen width.
 
-### Grid
+## Breakpoints
+
+Every class has variations for including breakpoints
+`.className-[breakpoint]-sintax`
+
+Breakpoints can assume:
+
+|breakpoint | screen size|
+|-----------|------------|
+|    xs     |   <576px   |
+|    sm     |  >=576px   |
+|    md     |  >=768px   |
+|    lg     |  >=992px   |
+|    xl     |  >=1200px  |
+
+## Grid
 
 #### Row
 ```HTML
@@ -76,7 +91,7 @@ Does nothing, have columns as child.
 ```
 By default, the Bootstrap 4 grid consists of 12 columns. 
 
-- .col-size
+- .col-position
   - A number between 1 and 12 (position)
   - Or predefined sizes or breakpoints: xs, sm, md, lg, xl (Depend on the screen width in px)
 
@@ -86,7 +101,7 @@ By default, the Bootstrap 4 grid consists of 12 columns.
 - .offset-[breakpoint]-[size]
   - Add blank space between column using the same logic applied to columns.
 
-### Flex
+## Flex
 In order to use the flex utilies you need to have a flex container.
 
 - .d-flex
@@ -107,28 +122,85 @@ In order to use the flex utilies you need to have a flex container.
 - .flex-column-reverse
   - Align items vertically Bottom-Top
 
-- .justify-content-
+- .justify-content- (main axis - horizontal)
   - start  : Align at the begining
   - center : Center
   - end : Align at the end
   - between : Evenly space between the elements
   - around : Evenly space around the elements
 
-### Image
+- .align-items- (cross axis - vertical)
+  - stretch
+  - start
+  - end
+  - center
+  - baseline (along the content inside the element)
+
+- .mr-auto (as much as left possible)
+- .ml-auto (as much as right possible)
+
+- .flex-fill (fill the space in the container with the element)
+
+- .flex-grown-# (make the remaining space of the container to go to one element)
+
+- .flex-shrink-# (make an element shrink if there's no space)
+
+- .w-100 (makes an element have 100% width)
+
+- .flex-
+  - nowrap (will be bigger than the container)
+  - wrap (will move the elements to another row within the container)
+  - wrap-reverse (same thing as above, but bottom-top)
+
+## Images
 - img-responsive
   - Make images responsive
 
-### Text
-- text-center
-  - Align center
-- text-primary
-  - Apply Header styling to the text
-- text-danger
-  - Red text
+## Typography
+Bootstrap 4’s default font-size is 16px
+The classes for colours are defined as `.text-[context]`. 
 
-### Elements
+- .text-
+  - primary (Blue text)
+  - secondary (Black text)
+  - success (Green text)
+  - danger (Red text)
+  - warning (Yellow text)
+  - info (Light blue text)
+  - left (align)
+  - right (align)
+  - center (align)
+  - justify (align)
+  - lowercase
+  - uppercase
+  - capitalized
+  - weight-
+    - bold
+    - normal
+    - light
+  - italic
+  - .h# or <h#></h#>
+    - heading from **h1** to **h6**
+- .display-# (bigger title)
+- `<mark></mark>` or .mark (highlight in light color)
+- `<kbd></kbd>` (highlight in black)
+- `<small></small>` or .small (decrease font size)
+- `<del></del>` or `<s></s>` (strike through text)
+- `<u></u>` or `<ins></ins>` (underline text)
+- `<b></b>` or `<strong></strong>` (also bold text)
+- `<i></i>` or `<em></em>` (also make italic text)
+- `<abbr></abbr>` (abbreviation - a hint will appear when hovering)
+- `<blockquote>` (to create blockquotes)
+  - .blockquote  (to create the quote)
+- `<code></code>` (single line of code)
+  - `<pre></pre>` (multiples line of code)
+- 
 
-## Button
+
+
+## Elements
+
+### Button
 
 - btn 
   - Mandatory class
@@ -143,12 +215,12 @@ In order to use the flex utilies you need to have a flex container.
 - btn-danger
   - Apply some color to the button and is used to give an alert
 
-## Forms
+### Forms
 
 - form-control
   - Width of 100% to elements within a form
 
-### Visual
+## Visual
 
 - well 
   - Some background style.
