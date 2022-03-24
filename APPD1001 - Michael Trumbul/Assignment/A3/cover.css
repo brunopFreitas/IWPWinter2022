@@ -9,6 +9,13 @@
   text-shadow: none; /* Prevent inheritance from `body` */
 }
 
+#logo {
+  font-weight: normal;
+}
+
+.description {
+  font-size: 12px;
+}
 
 
 
