@@ -1,0 +1,23 @@
+/*
+ * Globals
+ */
+
+ .btn-secondary,
+ .btn-secondary:hover,
+ .btn-secondary:focus {
+   color: rgba(0, 0, 0, 0.932);
+   font-weight: bold;
+   border-radius: 10px;
+ }
+ 
+ #logo {
+   font-weight: normal;
+ }
+
+ .menuitem {
+     font-size: 30px;
+ }
+
+ .footernote {
+    font-size: 14px;
+ }
