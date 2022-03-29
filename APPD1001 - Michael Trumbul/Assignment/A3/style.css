@@ -8,8 +8,8 @@
 .btn-secondary:focus {
   color: #333;
   text-shadow: none; /* Prevent inheritance from `body` */
-  font-weight: bold;
-  border-radius: 5px;
+  font-weight: bold; /* To match example provided */
+  border-radius: 5px; /* To match example provided */
 }
 
 /*
@@ -51,9 +51,15 @@ body {
   border-bottom-color: #fff;
 }
 
+/* Icon resize  */
  .mugIcon {
    height: 11%;
    width: 10%;
+ }
+
+ /* Text justify */
+ .text-justify {
+   text-align: justify;
  }
 
 
