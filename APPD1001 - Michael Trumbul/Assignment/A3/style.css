@@ -5,19 +5,14 @@
  .btn-secondary,
  .btn-secondary:hover,
  .btn-secondary:focus {
-   color: rgba(0, 0, 0, 0.932);
    font-weight: bold;
-   border-radius: 10px;
+   border-radius: 5px;
  }
+
+ .mugIcon {
+   height: 11%;
+   width: 10%;
+ }
+
+
  
- #logo {
-   font-weight: normal;
- }
-
- .menuitem {
-     font-size: 30px;
- }
-
- .footernote {
-    font-size: 14px;
- }
