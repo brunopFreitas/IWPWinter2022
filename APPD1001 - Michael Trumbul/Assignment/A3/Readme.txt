@@ -11,7 +11,7 @@ The prototype was built using this structure as a template https://getbootstrap.
 
 This file stores the landing page structure of the prototype.
 It was designed to be responsive, working with any screen width, and also to have a fixed header and footer.
-To make everything work properly, I have imported boostrap.min.css locally, created a few custom styles in the style.css file, and also
+To make everything work properly, I have imported boostrap.min.css from CDN, created a few custom styles in the style.css file, and also
 imported fontawesome lib to use some icons.
 
 ##Body
@@ -32,7 +32,8 @@ The header of the page contains the mug icon, the company's logo, and the naviga
 All elements are displayed as flex.
 
 ##Mug Icon and Logo
-The mug icon and the company's logo are inside an h1 element and using bootstrap they were set to float to the start, so they are positioned slightly to the left.
+The mug icon and the company's logo are inside an h1 element and using bootstrap they were set to float to the start, 
+I have also included a custom style to make everything align to the left, so they are positioned slightly to the left.
 
 ##NavMenu
 The nav menu is justified to center and positioned to right using float right class from bootstrap.
@@ -45,7 +46,7 @@ The paragraph contains the lead style from bootstrap.
 The call to action button was created also using bootstrap default settings for buttons.
 
 ##Footer
-The footer of the page contains a paragraph and an icon imported from awesomelib.
+The footer of the page contains a paragraph and an icon imported from awesomelib. I have used a bootstrap class to make the text slightly gray.
 
 ##Margin and Padding
 Some elements have margin and padding dimensions changed by bootstrap classes.
