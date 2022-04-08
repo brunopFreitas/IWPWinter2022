@@ -1,0 +1,15 @@
+html {
+    background-color: darkgreen;
+}
+
+p {
+    font-size: 1.6em;
+    color: white;
+    font-weight: bold;
+}
+
+img {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
