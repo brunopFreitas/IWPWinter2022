@@ -21,12 +21,13 @@
     integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
   <!-- Custom css -->
   <link href="style.css" rel="stylesheet">
+  <link rel="stylesheet" href="layout.css">
 </head>
 <!-- Body begins -->
 
 <body class="d-flex h-auto text-center text-white" data-new-gr-c-s-check-loaded="14.1054.0" data-gr-ext-installed="">
   <!-- Background image filter -->
-  <div class="d-flex h-100 w-100" style="background-color: darkgreen; backdrop-filter: blur(4px);">
+  <div class="d-flex h-100 w-100 bkg">
     <!-- Cover-container for bootstrap -->
     <div class="container d-flex w-100 h-100 p-3 mx-auto flex-column">
       <!-- Header begins -->
@@ -37,7 +38,7 @@
           </h1>
           <!-- Menu -->
           <nav class="nav nav-masthead justify-content-center float-md-start">
-            <a class="nav-link text-white h5" aria-current="page" href="index.html">New Game</a>
+            <a class="nav-link text-white h5" aria-current="page" href="index.html">Home</a>
             <a class="nav-link text-white h5" href="instruction.html">Instructions</a>
             <a class="nav-link text-white h5" href="https://www.pagat.com/put/truco_br.html"
               target="_blank">History</a>
@@ -48,7 +49,7 @@
       <main class="d-flex flex-row">
 
         <!-- Instructions -->
-        <div class="p-1">
+        <div class="p-1 instructions">
           <h3 class="text-decoration-underline">Instructions</h3>
           <h4 class="my-0">New Game</h4>
           <p>A deck with 27 cards is created and shuffled.</p>
@@ -68,13 +69,13 @@
           <h4 class="my-0">Truco</h4>
           <p>The red button labeled "Truco" increases the amount of points worth in the match.</p>
           <p>You can click on it at anytime, your opponent can do that too.</p>
-          <ul class="list-unstyled">Truco decision tree:
+          <ul class="list-unstyled decision">Truco decision tree:
             <li class="h5">Accept: You are now playing a 3 points match.</li>
             <li class="h5">Run away: The match ends, and your opponent wins 1 point.</li>
             <li class="h5">Raise: The match become a 6 points match.</li>
           </div>
 
-          <div class="p-1">
+          <div class="p-1 table">
             <table class="table text-white">
               <h3 class="text-decoration-underline">Card Hierarchy</h3>
               <thead>

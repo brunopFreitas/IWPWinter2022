@@ -16,12 +16,13 @@
     integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
   <!-- Custom css -->
   <link href="style.css" rel="stylesheet">
+  <link rel="stylesheet" href="layout.css">
 </head>
 <!-- Body begins -->
 <body class="d-flex h-auto text-center text-white" data-new-gr-c-s-check-loaded="14.1054.0"
   data-gr-ext-installed="">
     <!-- Background image filter -->
-    <div class="d-flex h-100 w-100 mask" style="background-color: darkgreen; backdrop-filter: blur(4px);">
+    <div class="d-flex h-100 w-100 mask bkg">
       <!-- Cover-container for bootstrap -->
       <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
         <!-- Header begins -->
@@ -31,7 +32,7 @@
               <h1 class="float-md-start mb-0 logo"><img class="cardIcon" src="image/cards-icon.png" alt="DeckOfCards"> Truco</h1>
             <!-- Menu -->
             <nav class="nav nav-masthead justify-content-center float-md-end">
-              <a class="nav-link text-white h5" aria-current="page" href="index.html">New Game</a>
+              <a class="nav-link text-white h5" id="newGame">New Game</a>
               <a class="nav-link text-white h5" href="instruction.html">Instructions</a>
               <a class="nav-link text-white h5" href="https://www.pagat.com/put/truco_br.html" target="_blank">History</a>
             </nav>
@@ -42,37 +43,36 @@
           
           <!-- PC Cards -->
           <div class="d-flex flex-row justify-content-evenly align-content-center">
-            <div class="justify-content-start m-1"><img class="img-fluid" src="image/cardback.jpg" alt="PcCard1"></div>
-            <div class="justify-content-start m-1"><img class="img-fluid" src="image/cardback.jpg" alt="PcCard2"></div>
-            <div class="justify-content-start m-1"><img class="img-fluid" src="image/cardback.jpg" alt="PcCard3"></div>
+            <div class="justify-content-start m-1 pcCard"><img class="img-fluid" id="pc0" src="image/cardback.jpg" alt="PcCard1"></div>
+            <div class="justify-content-start m-1 pcCard"><img class="img-fluid" id="pc1" src="image/cardback.jpg" alt="PcCard2"></div>
+            <div class="justify-content-start m-1 pcCard"><img class="img-fluid" id="pc2" src="image/cardback.jpg" alt="PcCard3"></div>
           </div>
 
           <!-- Board -->
-          <div class="d-flex flex-column justify-content-start bg-white border-1">
+          <div class="d-flex flex-column justify-content-start bg-white border-1 board">
             <div class="d-flex flex-row justify-content-evenly">
-              <p class="text-black h6 align-self-start">
+              <p class="text-black h6 align-self-start" id="placar">
                 Game Placar
               </p>
-              <p class="text-black h6 align-self-start">
+              <p class="text-black h6 align-self-start" id="match">
                 Game Match
               </p>
-              <p class="text-black h6 align-self-start">
+              <p class="text-black h6 align-self-start" id="round">
                 Game Round
               </p>
             </div>
-            <button type="button" class="btn btn-primary btn-lg bg-danger btn-outline-danger text-white w-25 align-self-center">Truco</button>
-            <div class="d-flex flex-column justify-content-center">
-              <p class="text-black">
-                More things here
+            <button type="button" class="btn btn-primary btn-lg bg-danger btn-outline-danger text-white w-25 align-self-center truco">Truco</button>
+            <div class="d-flex flex-column justify-content-center" id="logTable">
+              <p class="text-black" id="gameLog">
               </p>
             </div>
           </div>
 
           <!-- User cards -->
           <div class="d-flex flex-row justify-content-evenly align-content-center">
-            <div class="justify-content-start m-1"><img class="img-fluid" src="image/cardback.jpg" alt="PcCard1"></div>
-            <div class="justify-content-start m-1"><img class="img-fluid" src="image/cardback.jpg" alt="PcCard2"></div>
-            <div class="justify-content-start m-1"><img class="img-fluid" src="image/cardback.jpg" alt="PcCard3"></div>
+            <div class="justify-content-start m-1 userCard"><img class="img-fluid" id="uc0" src="image/cardback.jpg" alt="PcCard1"></div>
+            <div class="justify-content-start m-1 userCard"><img class="img-fluid" id="uc1" src="image/cardback.jpg" alt="PcCard2"></div>
+            <div class="justify-content-start m-1 userCard"><img class="img-fluid" id="uc2" src="image/cardback.jpg" alt="PcCard3"></div>
           </div>
           
         </main>
@@ -87,7 +87,8 @@
       </div>
     </div>
   </div>
-
+  <!-- main.js -->
+  <script type="text/javascript" src="main.js"></script>
 </body>
 <grammarly-desktop-integration data-grammarly-shadow-root="true"></grammarly-desktop-integration>
 
