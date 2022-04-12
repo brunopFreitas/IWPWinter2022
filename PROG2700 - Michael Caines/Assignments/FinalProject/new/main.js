@@ -1,7 +1,8 @@
 (function () {
 
     // Global variables
-    let amIPlaying = false
+    let isTrucoAlreadyCalled = false
+    let matchDefaultPoint = 1
     let userCards = []
     let pcCards = []
     let gameMatch = 1
@@ -73,8 +74,8 @@
                 }
             }
         }
-        fillBoard(placar, `Game Placar</br>PC ${pcGamePoint} x ${userGamePoint} User`)
-        fillBoard(match, `Game Match</br>Match ${gameMatch}</br>PC ${pcMatchPoint} x ${userMatchPoint} User`)
+        fillBoard(placar, `Game Placar</br>Fideles ${pcGamePoint} x ${userGamePoint} User`)
+        fillBoard(match, `Game Match</br>Match ${gameMatch}</br>Fideles ${pcMatchPoint} x ${userMatchPoint} User`)
         fillBoard(round, `Game Round</br>Round ${matchRound}`)
         fillBoard(gameLog, "A new match begins")
         userChooseCard()
@@ -87,20 +88,61 @@
                 playACard(userCards[i])
             }
         }
+        fillBoard(gameLog, "Select a card")
     }
+
+    //CallForTruco
+    function callForTruco() {
+        document.getElementById("truco").onclick = function () {
+            if (isTrucoAlreadyCalled === false) {
+                isTrucoAlreadyCalled = true
+                fillBoard(gameLog, "You called truco")
+                howFidelisWillRespond()
+            } else {
+                fillBoard(gameLog, "You already called for truco")
+            }
+        }
+    }
+
+    //FidelisResponseForTruco
+    function howFidelisWillRespond() {
+        let rand = Math.floor(Math.random() * 3)
+        switch (rand) {
+            case 0:
+                fillBoard(gameLog, "Fideles accepts! Now this math is worth 3 points!")
+                matchDefaultPoint = 3
+                break;
+            case 1:
+                fillBoard(gameLog, "Fideles run away! You won this match!")
+                userMatchPoint = 2
+                setTimeout(() => newMatch(), 3500)
+                break;
+            case 2:
+                fillBoard(gameLog, "Fideles is feeling confident! He doubled! Now it's a 6 points match")
+                matchDefaultPoint = 6
+                break;
+        }
+    }
+
 
     //Block click
     function noCLick() {
         for (let i = 0; i < userCards.length; i++) {
-            document.getElementById(userCards[i].position).onclick = function () {
-            }
+            document.getElementById(userCards[i].position).onclick = function () {}
         }
     }
-    
+
+    //AnimateMyCards
+    function animateMyCards(card) {
+        let el = "#" + card.position
+        window.animatelo.flip(el)
+    }
+
 
     //playACard
     function playACard(userCard) {
         if (userCard.played !== true) {
+            animateMyCards(userCard)
             fillBoard(gameLog, "You played " + userCard.value + " of " + userCard.suit)
             userCard.played = true
             let removeCard = document.getElementById(userCard.position)
@@ -125,42 +167,41 @@
             fillBoard(gameLog, "Draw!")
         } else {
             pcMatchPoint++
-            fillBoard(gameLog, "Fidelis win!")
+            fillBoard(gameLog, "Fideles win!")
         }
         matchRound++
         fillBoard(round, `Game Round</br>Round ${matchRound}`)
-        fillBoard(match, `Game Match</br>Match ${gameMatch}</br>PC ${pcMatchPoint} x ${userMatchPoint} User`)
-        newMatch()
+        fillBoard(match, `Game Match</br>Match ${gameMatch}</br>Fideles ${pcMatchPoint} x ${userMatchPoint} User`)
+        noCLick()
+        setTimeout(() => newMatch(), 3500)
     }
 
     //NewMatch
     function newMatch() {
-        if (gameMatch <= 22) {
-            if (userMatchPoint === 2 || pcMatchPoint === 2) {
-                noCLick()
-                if (userMatchPoint > pcMatchPoint) {
-                    fillBoard(gameLog, `User win match ${gameMatch}!`)
-                    userGamePoint++
-                } else if (userMatchPoint === pcMatchPoint) {
-                    fillBoard(gameLog, `It's a draw!`)
-                    userGamePoint++
-                    pcGamePoint++
-                } else {
-                    fillBoard(gameLog, `Pc win the match ${gameMatch}!`)
-                    pcGamePoint++
-                }
-                gameMatch++
-                userMatchPoint = 0
-                pcMatchPoint = 0
-                matchRound = 1
-                fillBoard(placar, `Game Placar</br>PC ${pcGamePoint} x ${userGamePoint} User`)
-                fillBoard(match, `Game Match</br>Match ${gameMatch}</br>PC ${pcMatchPoint} x ${userMatchPoint} User`)
-                fillBoard(round, `Game Round</br>Round ${matchRound}`)
-                fillBoard(gameLog, `Starting a new match!`)
-                setTimeout(() => null, 3000) 
-                resetElement()               
-                callAPI()
+        if (userMatchPoint === 2 || pcMatchPoint === 2) {
+            if (userMatchPoint > pcMatchPoint) {
+                fillBoard(gameLog, `User win match ${gameMatch}!`)
+                userGamePoint += matchDefaultPoint
+            } else if (userMatchPoint === pcMatchPoint) {
+                fillBoard(gameLog, `It's a draw!`)
+                userGamePoint += matchDefaultPoint
+                pcGamePoint += matchDefaultPoint
+            } else {
+                fillBoard(gameLog, `Fideles wins match ${gameMatch}!`)
+                pcGamePoint += matchDefaultPoint
             }
+            gameMatch++
+            userMatchPoint = 0
+            pcMatchPoint = 0
+            matchRound = 1
+            fillBoard(placar, `Game Placar</br>Fideles ${pcGamePoint} x ${userGamePoint} User`)
+            fillBoard(match, `Game Match</br>Match ${gameMatch}</br>Fideles ${pcMatchPoint} x ${userMatchPoint} User`)
+            fillBoard(round, `Game Round</br>Round ${matchRound}`)
+            fillBoard(gameLog, `Starting a new match!`)
+            resetElement()
+            setTimeout(() => callAPI(), 3500)
+        } else {
+            userChooseCard()
         }
     }
 
@@ -182,8 +223,24 @@
 
     //Normalization
     function normalizeMyResult(userCard, pcCard) {
-        let userPoint = 0
-        let pcPoint = 0
+        //Calculating points
+        let userPoint = showCardPoints(userCard)
+        let pcPoint = showCardPoints(pcCard)
+        let pointNormalized = {
+            userPoint: 0,
+            pcPoint: 0
+        }
+        userPoint.forEach(element => {
+            pointNormalized.userPoint = element
+        });
+        pcPoint.forEach(element => {
+            pointNormalized.pcPoint = element
+        });
+        return pointNormalized
+    }
+
+    //ShowCardPoints
+    function showCardPoints(cardObject) {
         let cardHierarchy = [{
                 value: "4",
                 suit: "",
@@ -235,64 +292,94 @@
                 point: 1
             }
         ]
-        cardHierarchy.forEach(element => {
-            if (element.value === userCard.value) {
-                if (element.suit === userCard.suit) {
-                    userPoint = element.point
-                } else if (element.suit === "") {
-                    userPoint = element.point
-                }
-            }
-        })
-        cardHierarchy.forEach(element => {
-            if (element.value === pcCard.value) {
-                if (element.suit === pcCard.suit) {
-                    pcPoint = element.point
-                } else if (element.suit === "") {
-                    pcPoint = element.point
-                }
-            }
-        })
-        let pointNormalized = {
-            userPoint: userPoint,
-            pcPoint: pcPoint
+        let sevenAndAce = cardHierarchy.filter(element => (element.value === cardObject.value && element.suit === cardObject.suit))
+        let anyOtherCard = cardHierarchy.filter(element => (element.value === cardObject.value && element.suit === ""))
+        if (sevenAndAce.length !== 0) {
+            let point = sevenAndAce.map(element => {
+                return element.point
+            })
+            return point
+        } else if (anyOtherCard.length !== 0) {
+            let point = anyOtherCard.map(element => {
+                return element.point
+            })
+            return point
         }
-        return pointNormalized
     }
 
     //PcChooseCard
     function pcChooseCard() {
         let pcCardJustPlayed = pcPlayACard()
-        return pcCardJustPlayed
+        if (pcCardJustPlayed!==0) {
+            return pcCardJustPlayed
+        } else {
+            if (pcCards[0].played === false) {
+                animateMyCards(pcCards[0])
+                displayImage(pcCards[0].image, pcCards[0].position)
+                pcCards[0].played = true
+                hideAnElement(document.getElementById(pcCards[0].position))
+                fillBoard(gameLog, "Fideles played " + pcCards[0].value + " of " + pcCards[0].suit)
+                return pcCards[0]
+            } else if (pcCards[1].played === false) {
+                animateMyCards(pcCards[1])
+                displayImage(pcCards[1].image, pcCards[1].position)
+                pcCards[1].played = true
+                hideAnElement(document.getElementById(pcCards[1].position))
+                fillBoard(gameLog, "Fideles played " + pcCards[1].value + " of " + pcCards[1].suit)
+                return pcCards[1]
+            } else if (pcCards[2].played === false) {
+                animateMyCards(pcCards[2])
+                displayImage(pcCards[2].image, pcCards[2].position)
+                pcCards[2].played = true
+                hideAnElement(document.getElementById(pcCards[2].position))
+                fillBoard(gameLog, "Fideles played " + pcCards[2].value + " of " + pcCards[2].suit)
+                return pcCards[2]
+            }            
+        }        
     }
 
     // PCPlayACard
     function pcPlayACard() {
-        if (pcCards[0].played === false) {
-            displayImage(pcCards[0].image, pcCards[0].position)
-            pcCards[0].played = true
-            hideAnElement(document.getElementById(pcCards[0].position))
-            fillBoard(gameLog, "Fidelis played " + pcCards[0].value + " of " + pcCards[0].suit)
-            return pcCards[0]
-        } else if (pcCards[1].played === false) {
-            displayImage(pcCards[1].image, pcCards[1].position)
-            pcCards[1].played = true
-            hideAnElement(document.getElementById(pcCards[1].position))
-            fillBoard(gameLog, "Fidelis played " + pcCards[1].value + " of " + pcCards[1].suit)
-            return pcCards[1]
-        } else if (pcCards[2].played === false) {
-            displayImage(pcCards[2].image, pcCards[2].position)
-            pcCards[2].played = true
-            hideAnElement(document.getElementById(pcCards[2].position))
-            fillBoard(gameLog, "Fidelis played " + pcCards[2].value + " of " + pcCards[2].suit)
-            return pcCards[2]
+        let randPC = Math.floor(Math.random() * 3)
+        switch (randPC) {
+            case 0:
+                if (pcCards[0].played === false) {
+                    animateMyCards(pcCards[0])
+                    displayImage(pcCards[0].image, pcCards[0].position)
+                    pcCards[0].played = true
+                    hideAnElement(document.getElementById(pcCards[0].position))
+                    fillBoard(gameLog, "Fideles played " + pcCards[0].value + " of " + pcCards[0].suit)
+                    return pcCards[0]
+                }
+                break;
+            case 1:
+                if (pcCards[1].played === false) {
+                    animateMyCards(pcCards[1])
+                    displayImage(pcCards[1].image, pcCards[1].position)
+                    pcCards[1].played = true
+                    hideAnElement(document.getElementById(pcCards[1].position))
+                    fillBoard(gameLog, "Fideles played " + pcCards[1].value + " of " + pcCards[1].suit)
+                    return pcCards[1]
+                }
+                break;
+            case 2:
+                if (pcCards[2].played === false) {
+                    animateMyCards(pcCards[2])
+                    displayImage(pcCards[2].image, pcCards[2].position)
+                    pcCards[2].played = true
+                    hideAnElement(document.getElementById(pcCards[2].position))
+                    fillBoard(gameLog, "Fideles played " + pcCards[2].value + " of " + pcCards[2].suit)
+                    return pcCards[2]
+                }
+                break;
         }
+        return 0
     }
 
     //RemoveAnElement
     function hideAnElement(element) {
         element.style.filter = "brightness(0.3)"
-    }   
+    }
 
     //drawCards
     function drawCards(deckID) {
@@ -308,6 +395,7 @@
                 }
             })
             .then(response => {
+                callForTruco()
                 PlayTruco(response)
             })
     }
@@ -315,22 +403,34 @@
     //Function that fetch an api
     function callAPI() {
         //URL to fetch
-        amIPlaying = true
-        const contextNewDeck = "api/deck/new/shuffle/?"
-        const cards = "cards=JS,JC,JH,JD,QS,QC,QH,QD,KS,KC,KH,KD,AC,AH,AD,2S,2C,2H,2D,3S,3C,3H,3D,7D,AS,7H,4C"
-        const newDeck = url + contextNewDeck + cards
-        fetch(newDeck)
-            .then(data => {
-                if (data.ok) {
-                    return data.json()
-                } else {
-                    console.log("Can't fetch a deck!")
-                }
-            })
-            .then(response => {
-                deckID = response.deck_id
-                drawCards(deckID)
-            })
+        if (userGamePoint <= 11 && pcGamePoint <= 11) {
+            isTrucoAlreadyCalled = false
+            matchDefaultPoint = 1
+            const contextNewDeck = "api/deck/new/shuffle/?"
+            const cards = "cards=JS,JC,JH,JD,QS,QC,QH,QD,KS,KC,KH,KD,AC,AH,AD,2S,2C,2H,2D,3S,3C,3H,3D,7D,AS,7H,4C"
+            const newDeck = url + contextNewDeck + cards
+            fetch(newDeck)
+                .then(data => {
+                    if (data.ok) {
+                        return data.json()
+                    } else {
+                        console.log("Can't fetch a deck!")
+                    }
+                })
+                .then(response => {
+                    deckID = response.deck_id
+                    drawCards(deckID)
+                })
+
+        } else {
+            if (userGamePoint >= 12) {
+                fillBoard(gameLog, `User won the game!</br></br>`)
+            } else {
+                fillBoard(gameLog, `Fideles won the game!</br></br>`)
+            }
+            userGamePoint = 0
+            pcGamePoint = 0
+        }
     }
     startAGame()
 })()
