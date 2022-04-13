@@ -430,6 +430,7 @@
             }
             userGamePoint = 0
             pcGamePoint = 0
+            gameMatch = 0
         }
     }
     startAGame()
