@@ -1,0 +1,88 @@
+html {
+    background-color: darkgreen;
+}
+
+.pc-card {
+    display: flex;
+    justify-content: center;
+    align-self: flex-end;
+}
+
+.pcard1, .pcard2, .pcard3 {
+    height: 311px;
+    width: 223px;
+    background-image: url(img/cardback.jpg);
+    margin: 10px;
+}
+
+.user-card {
+    display: flex;
+    justify-content: center;
+    align-self: flex-end;
+}
+
+.ucard1, .ucard2, .ucard3 {
+    height: 311px;
+    width: 223px;
+    background-image: url(img/cardback.jpg);
+    margin: 10px;
+}
+
+.middle-table {
+    display: flex;
+    justify-content: center;
+    align-self: flex-end;
+    height: auto;
+}
+
+#menu {
+    display: flex;
+ }
+
+#logo {
+    display: flex;
+    justify-content: flex-start;
+}
+
+#logo img {
+    height: 60%;
+    width: auto;
+}
+
+#row {
+    display: flex;
+    justify-content: flex-start;
+    text-align: center;
+    list-style: none;
+    list-style-image: none;
+    align-items: flex-start;
+ }
+
+ nav#menu ol li {
+    margin: 10px;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+ }
+
+ a#navicon {
+    display: none;
+ }
+    
+ nav#menu a {
+    color: white;
+    text-decoration: none;
+    font-size: 2em;
+ }
+
+ nav#menu a:focus {
+    outline: thin dotted;
+ }
+
+ nav#menu a:hover, nav#menu a:active {
+    outline: 2px;
+ }
+
+ nav#menu a:hover {
+    text-decoration: underline;
+ }
