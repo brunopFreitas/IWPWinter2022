@@ -74,7 +74,7 @@
                 }
             }
         }
-        fillBoard(placar, `Game Placar</br>Fideles ${pcGamePoint} x ${userGamePoint} User`)
+        fillBoard(placar, `Game Scoreboard</br>Fideles ${pcGamePoint} x ${userGamePoint} User`)
         fillBoard(match, `Game Match</br>Match ${gameMatch}</br>Fideles ${pcMatchPoint} x ${userMatchPoint} User`)
         fillBoard(round, `Game Round</br>Round ${matchRound}`)
         fillBoard(gameLog, "A new match begins")
@@ -430,7 +430,7 @@
             }
             userGamePoint = 0
             pcGamePoint = 0
-            gameMatch = 0
+            gameMatch = 1
         }
     }
     startAGame()
